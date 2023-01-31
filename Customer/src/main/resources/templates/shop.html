@@ -59,12 +59,12 @@
                                                                data-placement="right" title="View"><i
                                                                 class="fas fa-eye"></i></a></li>
                                                     </ul>
-                                                    <a class="cart" href="#">Add to Cart</a>
+<!--                                                    <a class="cart" th:action="@{/add-to-cart}">Add to Cart</a>-->
                                                 </div>
                                             </div>
                                             <div class="why-text">
                                                 <h4 th:text="${product.name}"></h4>
-                                                <h5 th:text="'$' + ${product.costPrice}"></h5>
+                                                <h5 th:text="${product.costPrice}+' Rs/-'"></h5>
                                             </div>
                                         </div>
                                     </div>
@@ -81,12 +81,31 @@
                                                 </div>
                                             </div>
                                         </div>
+<!--                                        <form th:action="@{/add-to-cart}" method="post" >-->
+<!--                                            <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">-->
+<!--                                                <div class="why-text full-width">-->
+<!--                                                    <h4 th:text="${productView.name}"></h4>-->
+<!--                                                    <h5 th:text="${productView.costPrice}+' Rs/-'"></h5>-->
+<!--                                                    <p th:text="${productView.description}"></p>-->
+<!--                                                    <input type="hidden" th:value="${product.id}" name="id">-->
+<!--                                                    <input type="submit" class="cart" value="Add to Cart">-->
+<!--&lt;!&ndash;                                                    <a class="btn hvr-hover"  th:href="@{/add-to-cart}" method="post" >&ndash;&gt;-->
+<!--&lt;!&ndash;                                                        Add to Cart&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    </a>&ndash;&gt;-->
+<!--                                                    &lt;!&ndash;                                                th:href="@{/add-to-cart}"&ndash;&gt;-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+
+<!--                                        </form>-->
                                         <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
                                             <div class="why-text full-width">
                                                 <h4 th:text="${productView.name}"></h4>
-                                                <h5 th:text="'$' + ${productView.costPrice}"></h5>
+                                                <h5 th:text="${productView.costPrice}+' Rs/-'"></h5>
                                                 <p th:text="${productView.description}"></p>
-                                                <a class="btn hvr-hover" href="#">Add to Cart</a>
+                                                <a class="btn hvr-hover"  th:href="@{/cart}" method="post" >
+                                                    Add to Cart
+                                                </a>
+<!--                                                th:href="@{/add-to-cart}"-->
                                             </div>
                                         </div>
                                     </div>
@@ -99,12 +118,12 @@
 
             <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
                 <div class="product-categori">
-                    <div class="search-product">
-                        <form action="#">
-                            <input class="form-control" placeholder="Search here..." type="text">
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-                    </div>
+<!--                    <div class="search-product">-->
+<!--                        <form action="#">-->
+<!--                            <input class="form-control" placeholder="Search here..." type="text">-->
+<!--                            <button type="submit"><i class="fa fa-search"></i></button>-->
+<!--                        </form>-->
+<!--                    </div>-->
                     <div class="filter-sidebar-left">
                         <div class="title-left">
                             <h3>Categories</h3>

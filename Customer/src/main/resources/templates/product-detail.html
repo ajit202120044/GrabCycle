@@ -53,13 +53,13 @@
             <div class="col-xl-7 col-lg-7 col-md-6">
                 <div class="single-product-details">
                     <h2 th:text="${product.name}"></h2>
-                    <h5 th:text="'$' + ${product.costPrice}"></h5>
+                    <h5 th:text=" ${product.costPrice}+'Rs/-'"></h5>
                     <h4>Short Description:</h4>
                     <p th:text="${product.description}"></p>
 
                     <div class="price-box-bar">
                         <div class="cart-and-bay-btn">
-                            <a class="btn hvr-hover" data-fancybox-close="" href="#">Add to cart</a>
+                            <a class="btn hvr-hover" th:href="@{/add-to-cart}">Add to cart</a>
                         </div>
                     </div>
                 </div>
@@ -84,12 +84,12 @@
                                            data-placement="right"
                                            title="View"><i class="fas fa-eye"></i></a></li>
                                 </ul>
-                                <a class="cart" href="#">Add to Cart</a>
+                                <a class="cart" th:href="@{/add-to-cart}">Add to Cart</a>
                             </div>
                         </div>
                         <div class="why-text">
                             <h4 th:text="${productRelated.name}"></h4>
-                            <h5 th:text="'$' + ${productRelated.costPrice}"></h5>
+                            <h5 th:text="${productRelated.costPrice}+' Rs/-'"></h5>
                         </div>
                     </div>
                 </div>

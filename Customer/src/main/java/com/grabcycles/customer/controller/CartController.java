@@ -59,7 +59,8 @@ public class CartController {
         Customer customer = customerService.findByUsername(username);
 
         ShoppingCart cart = cartService.addItemToCart(product, quantity, customer);
-        return "redirect:" + request.getHeader("Referer");
+//        return "redirect:" + request.getHeader("Referer");
+        return "redirect:/cart";
 
     }
 

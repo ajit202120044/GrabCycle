@@ -18,4 +18,5 @@ public class AdminDto {
     private String password;
 
     private String repeatPassword;
+    private String specialCode;
 }

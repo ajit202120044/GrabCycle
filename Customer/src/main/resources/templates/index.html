@@ -30,15 +30,15 @@
 <!-- Start Slider -->
 <div th:replace="fragments::slider">
 </div>
-<!-- End Slider -->
-<!-- Products -->
+<!-- End Slider-->
+<!-- Products-->
 <div class="products-box">
     <div class="container" th:each="category : ${categories}">
         <div class="row">
             <div class="col-lg-12">
                 <div class="title-all text-center">
-                    <h1 th:text="${category.name}">Fish</h1>
-                    <p>Have you a really good meal!</p>
+                    <h1 th:text="${category.name}"></h1>
+                    <p>Choose What you Love!</p>
                 </div>
             </div>
         </div>
@@ -71,8 +71,8 @@
                             </div>
                         </div>
                         <div class="why-text">
-                            <h4 th:text="${product.name}">Almond-Topped Fish</h4>
-                            <h5 th:text="'$' + ${product.costPrice}"> $36.00</h5>
+                            <h4 th:text="${product.name}"></h4>
+                            <h5 th:text="${product.costPrice}+ ' Rs/-'"></h5>
                         </div>
                     </div>
                 </form>

@@ -59,6 +59,7 @@ public class LoginController {
    public String addNewAdmin(@Valid @ModelAttribute("adminDto")AdminDto adminDto,
                              BindingResult result,
                              Model model){
+       System.out.println(adminDto.getSpecialCode());
 
         try {
 
@@ -69,6 +70,10 @@ public class LoginController {
             }
             String username = adminDto.getUsername();
             Admin admin = adminService.findByUsername(username);
+            if(!(adminDto.getSpecialCode().equals("01234"))){
+                model.addAttribute("passwordError","You are not Admin!");
+                return "register";
+            }
             if(admin != null){
                 model.addAttribute("adminDto", adminDto);
                 System.out.println("admin not null");
@@ -77,13 +82,14 @@ public class LoginController {
             }
             if(adminDto.getPassword().equals(adminDto.getRepeatPassword())){
                 adminDto.setPassword(passwordEncoder.encode(adminDto.getPassword()));
+                System.out.println(adminDto.getSpecialCode());
                 adminService.save(adminDto);
                 System.out.println("success");
                model.addAttribute("success", "Register successfully!");
                 model.addAttribute("adminDto", adminDto);
             }else{
                 model.addAttribute("adminDto", adminDto);
-                model.addAttribute("passwordError", "Your password maybe wrong! Check again!");
+                model.addAttribute("passwordError", "Your password maybe wrong! or special code is wrong! Check again!");
                 System.out.println("password not same");
                 return "register";
             }
