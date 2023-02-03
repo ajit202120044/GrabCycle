@@ -1,8 +1,7 @@
 package com.grabcycles.customer.controller;
 
-import com.grabcycles.library.model.Customer;
-import com.grabcycles.library.model.Order;
-import com.grabcycles.library.model.ShoppingCart;
+import com.grabcycles.library.model.*;
+import com.grabcycles.library.repository.ProductRepository;
 import com.grabcycles.library.service.CustomerService;
 import com.grabcycles.library.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class OrderController {
@@ -21,6 +21,8 @@ public class OrderController {
     private CustomerService customerService;
     @Autowired
     private  OrderService orderService;
+    @Autowired
+    private ProductRepository productRepository;
 
 
     @GetMapping("/check-out")
@@ -68,6 +70,16 @@ public class OrderController {
             String username = principal.getName();
             Customer customer = customerService.findByUsername(username);
             ShoppingCart cart = customer.getShoppingCart();
+
+            Set<CartItem> cartItemSet = cart.getCartItem();
+
+            for (CartItem cartItem:
+                 cartItemSet) {
+                Product product = cartItem.getProduct();
+                product.setCurrentQuantity(product.getCurrentQuantity() - cartItem.getQuantity());
+                productRepository.save(product);
+            }
+
             orderService.saveOrder(cart);
 
         }catch(Exception e){
